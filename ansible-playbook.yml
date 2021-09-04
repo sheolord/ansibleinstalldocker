@@ -67,6 +67,9 @@
       ansible.builtin.shell:
         cmd: sudo swapon -s & sudo swapoff -a
 
+    - name: Insert/Update "Match User" configuration block in /etc/ssh/sshd_config
+      replace: /dev/mapper/hakase--labs--vg-swap_1 none            swap    sw              0       0
+      replace: #/dev/mapper/hakase--labs--vg-swap_1 none            swap    sw              0       0
     - name: turn off firewalld
       ansible.builtin.shell:
         cmd: sudo systemctl stop firewalld & sudo systemctl disable firewalld
